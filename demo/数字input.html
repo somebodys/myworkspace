@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #test{position: fixed;top: 40%;left:40%;}
+    </style>
+</head>
+<body>
+<p>num:</p>
+<input id="test" type="text">
+<script src="../../js/plug/jquery-1.7.min.js"></script>
+<script>
+    jQuery(function(){
+        document.getElementById("test").addEventListener("keyup",function(){
+            this.value = this.value.match(/[1-9]*/)||"";
+        })
+    })
+
+</script>
+</body>
+</html>

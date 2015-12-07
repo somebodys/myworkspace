@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>JS Bin</title>
+</head>
+<body>
+
+</body>
+<script>
+    String.prototype.H_format = function(){
+        var str = this;
+        for (var i in arguments){
+            str = str.replace(/\{\{\s*\d\d*\s*\}\}/g,arguments[i]);
+        }
+        return str
+    };
+</script>
+</html>

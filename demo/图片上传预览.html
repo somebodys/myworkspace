@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<img id="preview">
+<input id="input" type="file" multiple>
+<script>
+    var input = document.getElementById("input");
+    input.addEventListener("change",function(){
+        //FileReader对象  兼容： ie10+ chrome firefox opera safari
+        var load = new FileReader();
+        load.onload = function(e){
+            console.log(e.target);
+            console.log(this);
+            document.getElementById("preview").src = e.target.result;
+        };
+        load.readAsDataURL(this.files[0]);
+    })
+</script>
+</body>
+</html>

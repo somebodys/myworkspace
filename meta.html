@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!--网站语言-->
+<html lang="zh-CN">
+
+<!--字符编码-->
+<meta charset="UTF-8">
+
+<!--ie兼容-->
+<meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+
+<!--移动设备视窗-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--魅族字体问题？？？？？-->
+<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"> 错乱
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=high-dpi, user-scalable=no"> 正常
+取属性，属性类别：文本区
+<?php echo MobileAPI_Customer_Model_Util::getFieldsValue('select value from catalog_product_entity_text where attribute_id=242 and entity_id='.$_product->getId(),'value');?>
+取属性，属性类别：文本栏位
+<?php echo MobileAPI_Customer_Model_Util::getFieldsValue('select value from catalog_product_entity_varchar where attribute_id=241 and entity_id='.$_product->getId(),'value');?>
+
+360用极速模式
+<!--http://se.360.cn/v6/help/meta.html-->
+

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    #container{display: block;position: relative;margin: 300px auto 0;width: 800px;overflow: hidden;}
+    .inner{height: 200px;position:relative;width: 9999px;}
+    .single{float: left;display: block;width: 200px;list-style: none;outline: 1px solid red;height: 100%;}
+    ul{margin: 0;padding: 0;}
+    button{height: 40px;width: 150px;margin-top: 30px;}
+</style>
+<body>
+
+    <div id="container">
+        <ul class="inner">
+            <li class="single">111111</li>
+            <li class="single">222222</li>
+            <li class="single">333334</li>
+            <li class="single">444444</li>
+            <li class="single">555555</li>
+            <li class="single">666666</li>
+            <li class="single">777777</li>
+            <li class="single">888888</li>
+            <li class="single">999999</li>
+            <li class="single">000000</li>
+            <li class="single">121212</li>
+            <li class="single">131313</li>
+            <li class="single">141414</li>
+            <li class="single">151515</li>
+            <li class="single">161616</li>
+            <li class="single">171717</li>
+            <li class="single">181818</li>
+            <li class="single">191919</li>
+            <li class="single">202020</li>
+        </ul>
+    </div>
+    <div style="margin: 0 auto;text-align: center">
+        <button id="left">左滑动</button>
+        <button id="right">右滑动</button>
+    </div>
+    <script src="../../js/plug/jquery-1.7.min.js"></script>
+    <script src="../../js/my/animation.js"></script>
+    <script>
+        (function($){
+            window.H_slider = function (selector,show_num,speed){
+                return new H_slider.fn.init(selector,show_num,speed);
+            };
+
+            H_slider.fn = H_slider.prototype;
+            H_slider.fn.init = function(selector,show_num,speed){
+                this.ct = $(selector); //最外层容器
+                this.sg = this.ct.find(".single");
+                this.w = this.sg.eq(0).width();//单个元素宽度
+                this.inner = this.ct.find(".inner");//移动容器
+                this.inner.css({left:0});//防止获取left为auto
+                this.stop = {id:0};//动画停止所用的id
+                this.step = 0;//切换计数
+                this.max = 0;//切换计数最大值
+                this.min = -(this.sg.length - show_num);//切换计数最小值
+                this.speed = speed;
+            };
+            H_slider.fn.init.prototype = H_slider.prototype;
+
+            H_slider.prototype.slide = function(type,num){
+                num = num||1;
+                //获取即将改变的状态值
+                this.step = this.step + (type == "left"?-num:num);
+                this.step = this.step > this.max?this.min:this.step;
+                this.step = this.step < this.min?this.max:this.step;
+                $.rAF_canimate(stop);
+                this.stop = this.inner.rAF_animate({left:this.step * this.w + "px"},this.speed,function(){});
+            }
+        }(jQuery));
+
+        var slider = H_slider("#container",4,30);
+        $("#left").on("click",function(){
+            slider.slide("left",4);
+        });
+        $("#right").on("click",function(){
+            slider.slide("right",4);
+        });
+    </script>
+</body>
+</html>

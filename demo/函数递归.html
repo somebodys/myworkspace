@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script>
+    function one(){
+        return arguments.length == 0?1:arguments[0](1);
+    }
+    function two(){
+        return arguments.length == 0?2:arguments[0](2);
+    }
+    function three(){
+        return arguments.length == 0?3:arguments[0](3);
+    }
+    function four(){
+        return arguments.length == 0?4:arguments[0](4);
+    }
+    function five(){
+        return arguments.length == 0?5:arguments[0](5);
+    }
+    function six(){
+        return arguments.length == 0?6:arguments[0](6);
+    }
+    function seven(){
+        return arguments.length == 0?7:arguments[0](7);
+    }
+    function eight(){
+        return arguments.length == 0?8:arguments[0](8);
+    }
+
+    function times(pre_val){
+        var fun = function(val){
+            return val * arguments.callee.pre_val;
+        };
+        fun.pre_val = pre_val;
+        return fun
+    }
+    function plus(pre_val){
+        var fun = function(val){
+            return val + arguments.callee.pre_val;
+        };
+        fun.pre_val = pre_val;
+        return fun
+    }
+    function minus(pre_val){
+        var fun = function(val){
+            return val - arguments.callee.pre_val;
+        };
+        fun.pre_val = pre_val;
+        return fun
+    }
+    function dividedBy(pre_val){
+        var fun = function(val){
+            return val / arguments.callee.pre_val;
+        };
+        fun.pre_val = pre_val;
+        return fun
+    }
+    function nine(){
+        return arguments.length == 0?9:arguments[0](9);
+    }
+    console.log(eight(minus(seven())));
+</script>
+</html>
