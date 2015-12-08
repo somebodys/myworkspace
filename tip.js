@@ -16,3 +16,5 @@
 //document.observe('dom:loaded', function () {console.log(1)});?????
 
 //https://gtmetrix.com 网站性能分析
+
+//pointer-events: none;透过点击
