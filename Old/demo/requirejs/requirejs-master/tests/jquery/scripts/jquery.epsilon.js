@@ -13,7 +13,7 @@
 
     //Register the plugin.
     if (typeof define !== 'undefined' && define.amd) {
-        define(['jquery.beta'], plugin);
+        define(['jquery.beta.js'], plugin);
     } else if (typeof jQuery !== 'undefined') {
         plugin(jQuery);
     }

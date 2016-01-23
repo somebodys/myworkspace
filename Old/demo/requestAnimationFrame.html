@@ -25,6 +25,20 @@
     <div id="animation"></div>
     <div id="stop">cancelAnimationFrame</div>
 </body>
-<script type="text/javascript" src="../../js/plug/jquery-1.7.min.js"></script>
-<script type="text/javascript" src="../../js/main.js"></script>
+<script type="text/javascript" src="../js/plug/jquery-1.7.min.js"></script>
+<!--<script type="text/javascript" src="../../js/main.js"></script>-->
+<script>
+    !function(){
+        var arr = [function(){console.log(1)},function(){console.log(2)},function(){console.log(3)},function(){console.log(4)}];
+        var j = 123;
+        var a;
+        for (var i = 0; i < arr.length; i++){
+            a = arr[i];
+            var fun = function(e){
+                e.data.fun();
+             };
+            $("#stop").on("click",{fun: arr[i]} ,fun)
+        }
+    }()
+</script>
 </html>

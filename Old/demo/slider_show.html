@@ -39,9 +39,57 @@
     <div style="margin: 0 auto;text-align: center">
         <button id="left">左滑动</button>
         <button id="right">右滑动</button>
+        <button data-ruleid="5" id="test">领券测试</button>
     </div>
-    <script src="../../js/plug/jquery-1.7.min.js"></script>
-    <script src="../../js/my/animation.js"></script>
+    <script src="../js/plug/jquery-1.7.min.js"></script>
+    <script src="../js/my/animation.js"></script>
+    <script>
+        //领取优惠券功能
+        (function () {
+            $('.codes a,#test').click(function (e) {
+                e.preventDefault();
+
+                var ruleid = $(this).data('ruleid');
+
+                if (!ruleid) return;
+
+                $.ajax({
+                    type: 'get',
+//                    url: ROOT_URL + 'o_salesrule/info/getCouponAuto/rule_id/' + ruleid + '/route/http://www.haituncun.com/promotion/20151212/',
+                    url: "http://23.91.96.217:8001/" + 'o_salesrule/info/getCouponAuto/rule_id/' + ruleid + '/route/http://www.haituncun.com/promotion/20151212/',
+                    dataType: 'jsonp',
+                    data: 'callback=?',
+                    success: function (data) {
+                        //easyDialog.close();
+
+                        if (data.ret == 1) {
+//                            easyDialog.open({
+//                                container: {
+//                                    header: '提示',
+//                                    content: '<p class="tip-success-content">领取成功，请于用户中心 - 优惠券查看</p>',
+//                                    yesFn: function () {},
+//                                    noFn: true
+//                                }
+//                            });
+                            console.log(data)
+                        } else if (data.ret == 1001) {
+                            window.location.href = data.loginUrl;
+                        } else {
+//                            easyDialog.open({
+//                                container: {
+//                                    header: '提示',
+//                                    content: '<p class="tip-fail-content">' + data.msg + '</p>',
+//                                    yesFn: function () {},
+//                                    noFn: true
+//                                }
+//                            });
+                            console.log(data)
+                        }
+                    }
+                });
+            });
+        })();
+    </script>
     <script>
         (function($){
             window.H_slider = function (selector,show_num,speed){

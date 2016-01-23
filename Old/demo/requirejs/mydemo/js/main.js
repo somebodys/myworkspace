@@ -3,7 +3,7 @@
  */
 require.config({
     paths: {
-        jquery:"jquery-1.7.min",
+        jquery:"jquery-1.7.min.js",
         amd_mod:"amd_mod",
         amd_rely:"amd_rely",
         mix_mod:"mix_mod",
@@ -37,7 +37,7 @@ require.config({
 //    jQuery.plu();
 //    jQuery().fn_plu();
 //});
-require(["non_standard_plu"],function(non_stand){
-    console.log("开始加载不规范模块");
-    non_stand.non();
-});
+//require(["non_standard_plu"],function(non_stand){
+//    console.log("开始加载不规范模块");
+//    non_stand.non();
+//});
