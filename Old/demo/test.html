@@ -1,0 +1,15 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input id="input" type="text">
+    <div style="border: 1px solid black;width: 200px;height: 200px;" id="target">123</div>
+</body>
+<script>
+    document.getElementById("input").addEventListener("change",function(){
+        document.getElementById("target").innerHTML = this.value;
+    })
+</script>
+</html>
