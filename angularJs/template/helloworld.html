@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div ng-app="myApp" ng-init="firstName='huang'">
+
+    <p>名字<input type="text" ng-model="name"></p>
+
+    <h1>hello,{{ name + "123" }}</h1>
+
+    <h1>first name:{{firstName}}</h1>
+
+    <span ng-bind="firstName"></span>
+</div>
+</body>
+<script src="../source/angular.min.js"></script>
+
+<script src="../js/main.js"></script>
+</html>
